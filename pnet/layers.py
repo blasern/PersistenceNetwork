@@ -1050,15 +1050,17 @@ class Persistence2DLayer(layers.Layer):
         '''
         shape = cubemap_ordering.shape
         # print(shape[4].eval(), shape[5].eval())
-        num_cubes_0d = (shape[4]+1)*(shape[5]+1)/4
-        num_cubes_1d = (shape[4]*shape[5]-1)/2
-        num_cubes_2d = (shape[4]-1)*(shape[5]-1)/4
+        num_cubes_0d = (shape[4]+1)*(shape[5]+1)//4
+        num_cubes_1d = (shape[4]*shape[5]-1)//2
+        num_cubes_2d = (shape[4]-1)*(shape[5]-1)//4
 
+        
         bm_0d1d_shape = (batch_size, shape[1], shape[2], num_channels,
                          num_cubes_0d, num_cubes_1d)
         bm_1d2d_shape = (batch_size, shape[1], shape[2], num_channels,
                          num_cubes_1d, num_cubes_2d)
 
+            
         # Ranges
         bs_range, np0_range, np1_range, nc_range = cls._make_ranges(
             cubemap_ordering, batch_size, num_channels)
