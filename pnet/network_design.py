@@ -90,7 +90,7 @@ def conv_layers(network, conv_dict, total_stride,
         out_W_list.append(network.W)
         out_b_list.append(network.b)
 
-        if (pool_filter is not None) or (pool_filter > 1):
+        if (pool_filter is not None):# or (pool_filter > 1):
             if pool_stride is None:
                 stride = None
                 total_stride *= pool_filter
