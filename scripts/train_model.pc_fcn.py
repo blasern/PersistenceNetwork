@@ -5,7 +5,7 @@ from pnet import utils
 
 if __name__ == '__main__':
 
-    use_real_data = True
+    use_real_data = False
 
     # Data options
     out_param_fp = 'data/MagnaTagATune/sample_model.npz'

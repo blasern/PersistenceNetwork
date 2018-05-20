@@ -192,11 +192,12 @@ def iterate_minibatches(inputs, targets, batchsize, shuffle=False):
     if shuffle:
         indices = np.arange(n)
         np.random.shuffle(indices)
-    for start_idx in range(0, n - batchsize + 1, batchsize):
+    for start_idx in range(0, n, batchsize):
+        stop_idx = np.min((start_idx + batchsize, n))
         if shuffle:
-            excerpt = indices[start_idx:start_idx + batchsize]
+            excerpt = indices[start_idx:stop_idx]
         else:
-            excerpt = slice(start_idx, start_idx + batchsize)
+            excerpt = slice(start_idx, stop_idx)
         yield inputs[excerpt], targets[excerpt].reshape((-1, k))
 
 
